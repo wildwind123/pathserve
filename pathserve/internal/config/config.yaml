@@ -1,0 +1,21 @@
+server:
+  host: 8085
+handler_configs:
+  vue:
+    handler: vue
+    work_dir: src
+    params:
+      params1: is params 1
+      params2: is params 2
+      params3: 123
+  vite:
+    handler: vue
+    work_dir: src
+    params:
+      html_template: is html_template
+      script_template: is script_template
+      auto_gen_dir: is auto_gen_dir
+      dir_public: is dir_public
+      host: is host
+host_params:
+  file1: is file 1

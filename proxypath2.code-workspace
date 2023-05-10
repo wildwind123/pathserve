@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "examples/vite-vue3"
+		},
+		{
+			"path": "client"
+		},
+		{
+			"path": "npmpackage"
+		},
+		{
+			"path": "pathserve"
+		}
+	],
+	"settings": {}
+}
