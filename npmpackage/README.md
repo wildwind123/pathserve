@@ -13,5 +13,5 @@ Tested on linux
 ## Examples
 
 ```
-https://github.com/wildwind123/pathproxy_examples
+https://github.com/wildwind123/pathserve
 ```
