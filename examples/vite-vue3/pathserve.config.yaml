@@ -9,10 +9,11 @@ handler_configs:
     work_dir: './'
     watch_dir: './src'
     params:
-      html_template: ./src/pathserve/templates/template.html
-      script_template: ./src/pathserve/templates/template.ts
-      auto_gen_dir: ./src/pathserve/autogen
-      dir_public: ./public
+      params:
+      html_template: node_modules/pathserve/templates/template.html
+      script_template: node_modules/pathserve/templates/template.ts
+      auto_gen_dir: node_modules/pathserve/autogen
+      dir_public: public
       host: http://localhost:5023
 host_params:
   index: node_modules/pathserve/client/index.html

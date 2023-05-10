@@ -1,17 +1,17 @@
 server:
   host: :8085
 handler_configs:
-  test:
+  book:
     handler: index
-    work_dir: '../examples/index'
-  vitecfg:
+    work_dir: '../client/dist'
+  ps:
     handler: vite
     work_dir: '../examples/vite-vue3'
     watch_dir: '../examples/vite-vue3/src'
     params:
-      html_template: ../examples/vite-vue3/src/pathserve/templates/template.html
-      script_template: ../examples/vite-vue3/src/pathserve/templates/template.ts
-      auto_gen_dir: ../examples/vite-vue3/src/pathserve/autogen
+      html_template: node_modules/pathserve/templates/template.html
+      script_template: node_modules/pathserve/templates/template.ts
+      auto_gen_dir: node_modules/pathserve/autogen
       dir_public: ../examples/vite-vue3/public
       host: http://localhost:5023
   vitecfg2:

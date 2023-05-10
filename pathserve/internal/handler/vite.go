@@ -142,7 +142,7 @@ func (v *Vite) GenerateScript(filePath string, handlerConfigName string, key str
 		return newFilePath, nil
 	}
 
-	f, err := os.OpenFile(newFilePath, os.O_RDWR|os.O_CREATE, 0666)
+	f, err := os.OpenFile(newFilePath, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
 	if err != nil {
 		return "", err
 	}
