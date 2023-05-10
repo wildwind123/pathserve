@@ -10,7 +10,7 @@
     "pathserve": "proxybook-amd64-linux"
   },
   "dependencies": {
-    "pathserve": "^0.0.2-alpha",
+    "pathserve": "^0.0.3-alpha",
     "vue": "^3.2.47"
   },
   "devDependencies": {

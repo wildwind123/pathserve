@@ -1,6 +1,6 @@
 {
     "name": "pathserve",
-    "version": "0.0.2-alpha",
+    "version": "0.0.3-alpha",
     "bin": {
       "proxybook-amd64-linux":"bin/proxybook-amd64-linux",
       "proxybook-amd64-mac":"bin/proxybook-amd64-mac",

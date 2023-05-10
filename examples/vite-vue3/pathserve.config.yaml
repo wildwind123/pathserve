@@ -10,8 +10,8 @@ handler_configs:
     watch_dir: './src'
     params:
       params:
-      html_template: node_modules/pathserve/templates/template.html
-      script_template: node_modules/pathserve/templates/template.ts
+      html_template: node_modules/pathserve/templates/vue3-template.html
+      script_template: node_modules/pathserve/templates/vue3-template.ts
       auto_gen_dir: node_modules/pathserve/autogen
       dir_public: public
       host: http://localhost:5023
