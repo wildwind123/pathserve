@@ -7,10 +7,10 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "pathserve": "proxybook-amd64-linux"
+    "pathserve": "pathserve-amd64-linux"
   },
   "dependencies": {
-    "pathserve": "^0.0.3-alpha",
+    "pathserve": "^0.0.501-alpha",
     "vue": "^3.2.47"
   },
   "devDependencies": {
