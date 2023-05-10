@@ -4,9 +4,6 @@
 			"path": "."
 		},
 		{
-			"path": "examples/vite-vue3"
-		},
-		{
 			"path": "client"
 		},
 		{
@@ -14,6 +11,9 @@
 		},
 		{
 			"path": "pathserve"
+		},
+		{
+			"path": "examples/vite-vue3"
 		}
 	],
 	"settings": {}
