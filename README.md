@@ -1,1 +1,3 @@
 # pathserve
+
+see examples
