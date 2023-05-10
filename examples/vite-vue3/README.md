@@ -3,7 +3,7 @@
 *.component.com
 ```
 
-1. on package.json change on yourself os, but current time tested on linux x64
+2. on package.json change on yourself os, but current time tested on linux x64
 
 ```
 "pathserve": "pathserve-amd64-linux"
@@ -13,17 +13,17 @@ or
 "pathserve": "pathserve-amd64-windows"
 ```
 
-2. run command
+3. run command
 ```
 npm run dev
 ```
 
-3. run command on different terminal
+4. run command on different terminal
 ```
 npm run pathserve
 ```
 
-4. open url
+5. open url
 
 ```
 http://book.index.component.com:8085
