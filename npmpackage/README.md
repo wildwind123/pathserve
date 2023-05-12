@@ -24,7 +24,6 @@ handler_configs:
     work_dir: './'
     watch_dir: './src'
     params:
-      params:
       html_template: node_modules/pathserve/templates/vue3-template.html
       script_template: node_modules/pathserve/templates/vue3-template.ts
       auto_gen_dir: node_modules/pathserve/autogen
