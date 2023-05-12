@@ -10,7 +10,7 @@
     "pathserve": "pathserve-amd64-linux"
   },
   "dependencies": {
-    "pathserve": "^0.0.503-alpha",
+    "pathserve": "^0.0.505-alpha",
     "vue": "^3.2.47"
   },
   "devDependencies": {
