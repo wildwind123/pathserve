@@ -1,6 +1,6 @@
 {
     "name": "pathserve",
-    "version": "0.0.504-alpha",
+    "version": "0.0.505-alpha",
     "bin": {
       "pathserve-amd64-linux":"bin/pathserve-amd64-linux",
       "pathserve-amd64-mac":"bin/pathserve-amd64-mac",

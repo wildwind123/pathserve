@@ -31,7 +31,9 @@ handler_configs:
       dir_public: public
       host: http://localhost:5023
 host_params:
-  index: node_modules/pathserve/client/index.html
+  - path: node_modules/pathserve/client/index.html
+    key: index
+    handler_config: ""
 ```
 on package.json
 
