@@ -44,12 +44,8 @@ func main() {
 		paramsList.WatchDirAndAddParam(watchDirPath, []string{key}...)
 
 	}
-	for key := range cfg.HostParams {
-		paramsList.AddParam(key, paramslist.Param{
-			Path:          cfg.HostParams[key],
-			Key:           key,
-			HandlerConfig: "from_config",
-		})
+	for i := range cfg.HostParams {
+		paramsList.AddParam(cfg.HostParams[i].Key, cfg.HostParams[i])
 	}
 
 	logger.Info("config loaded", zap.Any("config", cfg))

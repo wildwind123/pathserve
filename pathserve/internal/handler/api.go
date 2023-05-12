@@ -17,7 +17,7 @@ type Api struct {
 }
 
 type Info struct {
-	Params []paramslist.Param `json:"params"`
+	Params []config.HostParam `json:"params"`
 	Config *config.Config
 }
 

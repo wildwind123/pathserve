@@ -5,12 +5,13 @@ import (
 )
 
 func TestConfig(t *testing.T) {
-	// 12312
+	// 12312 12
 	cfg, err := GetConfig("config.yaml")
 	if err != nil {
 		t.Error(err)
 		return
 	}
+
 	if cfg.Server.Host != "8085" {
 		t.Error("cfg.Server.Host is wrong")
 	}
@@ -23,8 +24,17 @@ func TestConfig(t *testing.T) {
 	if cfg.HandlerConfigs["vue"].Params["params1"] != "is params 1" {
 		t.Error(`cfg.HandlerConfigs["vue"].Params["params1"] is wrong`)
 	}
-	if cfg.HostParams["file1"] != "is file 1" {
-		t.Error(`cfg.HostParams["file1"] is wrong`)
+	if len(cfg.HostParams) != 2 {
+		t.Error("wrong count cfg.HostParams")
+	}
+	if cfg.HostParams[0].Key != "is key" {
+		t.Error("wrong key")
+	}
+	if cfg.HostParams[0].Path != "test/path" {
+		t.Error("wrong path")
+	}
+	if cfg.HostParams[0].HandlerConfig != "vue" {
+		t.Error("wrong path")
 	}
 
 	viteParams := cfg.HandlerConfigs["vite"].Params.GetViteParams()

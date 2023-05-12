@@ -6,7 +6,8 @@
           <p class="bulma-menu-label">{{ key }}</p>
           <ul class="bulma-menu-list">
             <template v-for="param in item">
-              <li>
+              <template v-if="param.handler_config != ''">
+                <li>
                 <a
                   :class="{
                     ['bulma-is-active']: param.key == props.selectedKey,
@@ -15,6 +16,7 @@
                   >{{ param.fileName }}</a
                 >
               </li>
+              </template>
             </template>
           </ul>
         </template>

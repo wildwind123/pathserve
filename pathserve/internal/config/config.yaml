@@ -18,4 +18,9 @@ handler_configs:
       dir_public: is dir_public
       host: is host
 host_params:
-  file1: is file 1
+  - path: test/path
+    key: is key
+    handler_config: vue
+  - path: test/path2
+    key: is key2
+    handler_config: vue2 

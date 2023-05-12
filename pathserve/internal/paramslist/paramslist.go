@@ -15,22 +15,16 @@ import (
 
 type ParamsList struct {
 	Logger *zap.Logger
-	list   map[string]Param
+	list   map[string]config.HostParam
 	mu     sync.Mutex
 	Config *config.Config
 }
 
-type Param struct {
-	Path          string `json:"path"`
-	Key           string `json:"key"`
-	HandlerConfig string `json:"handler_config"`
-}
-
-func Get(config *config.Config, logger *zap.Logger) *ParamsList {
+func Get(cfg *config.Config, logger *zap.Logger) *ParamsList {
 	return &ParamsList{
-		Config: config,
+		Config: cfg,
 		Logger: logger,
-		list:   map[string]Param{},
+		list:   make(map[string]config.HostParam),
 	}
 }
 
@@ -81,13 +75,13 @@ func (pL *ParamsList) SetParamsList(path string, patterns []string) error {
 	return nil
 }
 
-func (pL *ParamsList) GetParamList() map[string]Param {
+func (pL *ParamsList) GetParamList() map[string]config.HostParam {
 	pL.mu.Lock()
 	defer pL.mu.Unlock()
 	return pL.list
 }
 
-func (pL *ParamsList) GetParam(key string) *Param {
+func (pL *ParamsList) GetParam(key string) *config.HostParam {
 	pL.mu.Lock()
 	defer pL.mu.Unlock()
 	val, ok := pL.list[key]
@@ -121,7 +115,7 @@ func (pL *ParamsList) WatchDirAndAddParam(path string, patterns ...string) {
 	})
 }
 
-func (pL *ParamsList) AddParam(key string, param Param) {
+func (pL *ParamsList) AddParam(key string, param config.HostParam) {
 	pL.mu.Lock()
 	defer pL.mu.Unlock()
 	pL.list[key] = param
@@ -134,7 +128,7 @@ func (pL *ParamsList) AddPathToParam(pattern string, patchs ...string) error {
 	pL.mu.Lock()
 	defer pL.mu.Unlock()
 	if pL.list == nil {
-		pL.list = map[string]Param{}
+		pL.list = map[string]config.HostParam{}
 	}
 	for i := range patchs {
 		p := filepath.Clean(patchs[i])
@@ -154,7 +148,7 @@ func (pL *ParamsList) AddPathToParam(pattern string, patchs ...string) error {
 			p = filepath.Clean(absolutePath)
 		}
 
-		pL.list[pL.ParamKey(p, pattern)] = Param{
+		pL.list[pL.ParamKey(p, pattern)] = config.HostParam{
 			Path:          p,
 			Key:           pL.ParamKey(p, pattern),
 			HandlerConfig: pattern,

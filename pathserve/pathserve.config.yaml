@@ -28,6 +28,12 @@ handler_configs:
     handler: index
     work_dir: '../client/dist'
 host_params:
-  index: ../examples/index/index.html
-  client: '../client/dist/index.html'
-  vuecomponent: ../examples/vite-vue3/src/App.vue
+  - path: ./examples/index/index.html
+    key: index
+    handler_config: index
+  - path: ../client/dist/index.html
+    key: client
+    handler_config: book 
+  - path: ../examples/vite-vue3/src/App.vue
+    key: vuecomponent
+    handler_config: ps
