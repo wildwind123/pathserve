@@ -1,21 +1,20 @@
 {
-  "name": "client",
+  "name": "vite-vue3",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pathserve": "pathserve-amd64-linux"
   },
   "dependencies": {
-    "axios": "^1.4.0",
-    "lodash": "^4.17.21",
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.194",
-    "@types/node": "^20.1.1",
+    "@pathserve/bin": "workspace:^0.0.7",
+    "@pathserve/client": "workspace:^0.0.3",
     "@vitejs/plugin-vue": "^4.1.0",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",

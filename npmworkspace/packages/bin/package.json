@@ -1,0 +1,9 @@
+{
+  "name": "@pathserve/bin",
+  "version": "0.0.7",
+  "bin": {
+    "pathserve-amd64-linux":"pathserve-amd64-linux",
+    "pathserve-amd64-mac":"pathserve-amd64-mac",
+    "pathserve-amd64-windows.exe":"pathserve-amd64-windows.exe"
+  }
+}

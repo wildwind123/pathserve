@@ -1,9 +1,0 @@
-{
-    "name": "pathserve",
-    "version": "0.0.505-alpha",
-    "bin": {
-      "pathserve-amd64-linux":"bin/pathserve-amd64-linux",
-      "pathserve-amd64-mac":"bin/pathserve-amd64-mac",
-      "pathserve-amd64-windows.exe":"bin/pathserve-amd64-windows.exe"
-    }
-  }
