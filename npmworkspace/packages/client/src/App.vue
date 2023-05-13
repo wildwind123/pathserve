@@ -25,6 +25,7 @@
         <template v-if="app.selectedParam.value">
           <ResizeBlock>
             <iframe
+              ref="iframe"
               width="100%"
               height="100%"
               :src="paramUrl(app.selectedParam.value)"
@@ -33,22 +34,51 @@
           </ResizeBlock>
         </template>
       </div>
+      <div>
+        <Control :key="updateControl" @update:message="sendMessage($event)" :messages="messages"></Control>
+      </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import { useApp, paramUrl } from "@/composed/app";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import MenuListVue from "@/components/MenuList.vue";
 import NavbarVue from "@/components/Navbar.vue";
 import ResizeBlock from "@/components/ResizeBlock.vue";
 import helper from "@/helper/helper";
+import { Message } from "@pathserve/messenger";
+import Control from "@/components/Control.vue";
 import "@/style/bulma.css";
+import _ from "lodash";
 const app = useApp();
+const iframe = ref<HTMLIFrameElement | null>(null);
+
+const messages = ref<Message[]>([]);
+const updateControl = ref(0)
 
 onMounted(() => {
+  window.addEventListener("message", receiveMessage, false);
   app.request();
 });
+function receiveMessage(event: MessageEvent<Message>) {
+  if (!event.data.fromPathServe) {
+    return;
+  }
+  const index = _.findIndex(messages.value, ["key", event.data.key]);
+  if (index == -1) {
+    messages.value.push(event.data);
+    return;
+  }
+  // console.log('new value', event.data)
+  messages.value[index] = event.data;
+  updateControl.value = updateControl.value +1
+}
+
+function sendMessage(message : Message) {
+      iframe.value!.contentWindow!.postMessage(_.cloneDeep(message), '*');
+}
+
 </script>
 <style scoped>
 .app {
