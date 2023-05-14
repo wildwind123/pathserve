@@ -35,7 +35,12 @@ const emit = defineEmits<{
 }>()
 
 const objectToJson = (object : object) => {
-   return JSON.stringify(object)
+    try {
+        return JSON.stringify(object)
+    } catch (e) {
+        console.warn(`cant't stringify object = `, object, 'message =',props.message, e)
+        return `{"error": "cant't stringify object, see logs"}`
+    }
 }
 const updateObject = (string : string) => {
     try {
@@ -45,7 +50,7 @@ const updateObject = (string : string) => {
                 type: 'object'
             } } )
     } catch (e) {
-        console.error(`cant't parse string = `, string, 'message =',props.message, e)
+        console.warn(`cant't parse string = `, string, 'message =',props.message, e)
     }
     
 }

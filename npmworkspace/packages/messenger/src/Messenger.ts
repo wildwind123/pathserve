@@ -1,5 +1,5 @@
 import { Listener } from "./Listener";
-import { Message as M } from "./Message";
+import { FormControl, Message as M } from "./Message";
 import {cloneDeep as _cloneDeep} from "lodash"
 import { v4 as uuidv4 } from "uuid";
 
@@ -184,16 +184,15 @@ export let useButton = (name : string, clickedHook: () => void) => {
     clickedHook()
   });
 
-  const setValue = (value: object) => {
-    const clonedValue = _cloneDeep(value)
-    messenger.setState({ Data: { type: "object", data: clonedValue } });
+  const setButtonName = (buttonName: string) => {
+    messenger.setState({ Form: { element: "button", name : buttonName} as FormControl } );
   };
 
   messenger.subscribe((message: Message) => {
     sendMessage(message);
   });
   return {
-    setValue
+    setButtonName
   };
 };
 
