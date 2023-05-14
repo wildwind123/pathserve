@@ -16,7 +16,7 @@
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@pathserve/client": "workspace:^0.0.4",
+    "@pathserve/client": "workspace:0.0.5",
     "@vitejs/plugin-vue": "^4.1.0",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
