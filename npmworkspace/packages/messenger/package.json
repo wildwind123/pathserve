@@ -1,0 +1,35 @@
+{
+  "name": "@pathserve/messenger",
+  "private": true,
+  "version": "0.0.2",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/messenger-lib.umd.cjs",
+  "module": "./dist/messenger-lib.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/messenger-lib.js",
+      "require": "./dist/messenger-lib.umd.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2",
+    "vite-plugin-dts": "^2.3.0"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.194",
+    "@types/uuid": "^9.0.1",
+    "lodash": "^4.17.21",
+    "pathe": "^1.1.0",
+    "uuid": "^9.0.0"
+  }
+}
