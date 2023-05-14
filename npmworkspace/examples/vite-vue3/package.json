@@ -10,7 +10,8 @@
     "pathserve": "pathserve-amd64-linux"
   },
   "dependencies": {
-    "@pathserve/messenger": "workspace:^0.0.1",
+    "@pathserve/messenger": "workspace:^0.0.2",
+    "vite-vue3": "link:",
     "vue": "^3.2.47"
   },
   "devDependencies": {
