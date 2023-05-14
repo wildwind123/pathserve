@@ -34,7 +34,7 @@
           </ResizeBlock>
         </template>
       </div>
-      <div>
+      <div class="app__main-control-wrapper"> 
         <Control :key="updateControl" @update:message="setSendMessage($event)" :messages="messages"></Control>
       </div>
     </div>
@@ -121,5 +121,8 @@ function sendMessage(message : Message) {
   overflow: auto;
   background-color: aqua;
   flex: 1;
+}
+.app__main-control-wrapper {
+  padding: 15px;
 }
 </style>

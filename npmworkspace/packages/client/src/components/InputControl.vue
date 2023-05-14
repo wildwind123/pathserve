@@ -14,7 +14,7 @@
             } } )" :value="props.message.Data!.data" />
         </template>
         <template v-else-if="props.message.Form.element =='input' && props.message.Form.type == 'textarea' && props.message.Data!.type == 'object'" >
-            <textarea :value="objectToJson(props.message.Data!.data as object)" @input="updateObject(($event.target as HTMLInputElement).value)"> </textarea>
+            <textarea class="bulma-textarea" :value="objectToJson(props.message.Data!.data as object)" @input="updateObject(($event.target as HTMLInputElement).value)"> </textarea>
         </template>
         <template v-else>
             <label >unknown element</label>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="control">
     <template v-for="message in props.messages">
       <template v-if="message.Form.element == 'input'">
         <InputControl
@@ -24,3 +24,8 @@ const emit = defineEmits<{
   (e: "update:message", message: Message): void;
 }>();
 </script>
+<style scoped>
+.control div:not(.control div:last-child) {
+   margin-bottom: 10px;
+}
+</style>
