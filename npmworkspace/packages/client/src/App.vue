@@ -50,6 +50,7 @@ import helper from "@/helper/helper";
 import { Message } from "@pathserve/messenger";
 import Control from "@/components/Control.vue";
 import "@/style/bulma.css";
+import "@/style/vars.css"
 import _ from "lodash";
 const app = useApp();
 const iframe = ref<HTMLIFrameElement | null>(null);
@@ -99,20 +100,24 @@ function sendMessage(message : Message) {
 }
 .app__header {
   /* background-color: red; */
+  height: var(--header-height);
+  /* overflow: hidden; */
 }
 .app__main {
   /* flex: 1; */
   /* background-color: blue; */
-  height: 100%;
+  height: calc(100vh - var(--header-height));
   display: flex;
 }
 .app__menu {
   min-width: 200px;
   max-width: 220px;
-  margin: 10px;
+  padding: 10px;
   /* border: 1px black solid ; */
   box-sizing: border-box;
   /* background-color: blueviolet; */
+  height: calc(100vh - var(--header-height)) ;
+  overflow: auto;
 }
 .app__main-content-wrapper {
   /* width: 500px;
@@ -124,5 +129,7 @@ function sendMessage(message : Message) {
 }
 .app__main-control-wrapper {
   padding: 15px;
+  height: calc(100vh - var(--header-height));
+  overflow: auto;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
-  <div class="bulma-box">
+  <div class="menu-list">
+    <div class="bulma-box">
     <aside class="bulma-menu">
       <template v-for="(item, key) in computedItems">
         <template v-if="key != 'from_config'">
@@ -23,6 +24,8 @@
       </template>
     </aside>
   </div>
+  </div>
+  
 </template>
 <script lang="ts" setup>
 import { Param } from "@/composed/model";
@@ -63,3 +66,8 @@ const computedItems = computed(() => {
 });
 </script>
 <script></script>
+<style scoped>
+.menu-list a{
+  overflow-wrap: break-word;
+}
+</style>
