@@ -1,9 +1,15 @@
 {
   "name": "@pathserve/bin",
-  "version": "0.0.7",
-  "bin": {
-    "pathserve-amd64-linux":"pathserve-amd64-linux",
-    "pathserve-amd64-mac":"pathserve-amd64-mac",
-    "pathserve-amd64-windows.exe":"pathserve-amd64-windows.exe"
+  "version": "0.0.9",
+  "scripts": {
+    "postinstall": "node postinstall.js"
+  },
+  "dependencies": {
+    "mkdirp": "^1.0.4",
+    "ncp": "^2.0.0"
+  },
+  "goBinary": {
+    "name": "pathserve",
+    "path": "./bin"
   }
 }

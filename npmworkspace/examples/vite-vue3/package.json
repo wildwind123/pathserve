@@ -7,15 +7,15 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "pathserve": "pathserve-amd64-linux"
+    "pathserve": "pathserve"
   },
   "dependencies": {
+    "@pathserve/bin": "workspace:^0.0.9",
     "@pathserve/messenger": "workspace:^0.0.2",
     "vite-vue3": "link:",
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@pathserve/bin": "workspace:^0.0.7",
     "@pathserve/client": "workspace:^0.0.4",
     "@vitejs/plugin-vue": "^4.1.0",
     "typescript": "^5.0.2",
