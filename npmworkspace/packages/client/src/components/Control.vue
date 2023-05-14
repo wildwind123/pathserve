@@ -1,7 +1,7 @@
 <template>
     <div>
         <template v-for="message in props.messages">
-            <InputControl @update:message="emit('update:message', $event)" :message="message"></InputControl>
+            <InputControl v-if="message.Form.element == 'input'" @update:message="emit('update:message', $event)" :message="message"></InputControl>
         </template>
     </div>
 </template>

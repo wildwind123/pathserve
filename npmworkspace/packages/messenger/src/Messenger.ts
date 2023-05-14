@@ -1,6 +1,6 @@
 import { Listener } from "./Listener";
 import { Message as M } from "./Message";
-
+import {cloneDeep as _cloneDeep} from "lodash"
 import { v4 as uuidv4 } from "uuid";
 
 declare global {
@@ -60,24 +60,140 @@ export let useString = (value: string , name : string, newValueHook: (newValue: 
   setListenerVariable()
   
   window.pathServeMessageListener!.hooks.push((event: MessageEvent<Message>) => {
-
     if (!event.data.fromPathServe || event.data.key != messenger.state.key) {
       return;
     }
-
-    newValueHook(event.data.Data.data as string)
+    newValueHook(event.data.Data!.data as string)
   });
 
   const setValue = (value: string) => {
     messenger.setState({ Data: { type: "string", data: value } });
+    newValueHook(value)
   };
 
   messenger.subscribe((message: Message) => {
     sendMessage(message);
   });
   return {
-    setValue,
-    message: messenger.state,
+    setValue
+  };
+};
+
+
+export let useNumber = (value: number , name : string, newValueHook: (newValue: number) => void) => {
+  let key = uuidv4();
+  let msg = {
+    fromPathServe: true,
+    scenario: "setParentValue",
+    key: key,
+    Data: {
+      type: 'number',
+      data: value,
+    },
+    Form: {
+      element: "input",
+      type: 'number',
+      name: name
+    },
+  } as Message;
+  let messenger = new Messenger(msg);
+  sendMessage(msg);
+  setListenerVariable()
+  
+  window.pathServeMessageListener!.hooks.push((event: MessageEvent<Message>) => {
+    if (!event.data.fromPathServe || event.data.key != messenger.state.key) {
+      return;
+    }
+    newValueHook(event.data.Data!.data as number)
+  });
+
+  const setValue = (value: number) => {
+    messenger.setState({ Data: { type: "number", data: value } });
+    newValueHook(value)
+  };
+
+  messenger.subscribe((message: Message) => {
+    sendMessage(message);
+  });
+  return {
+    setValue
+  };
+};
+
+export let useObject = (value: object , name : string, newValueHook: (newValue: object) => void) => {
+  let key = uuidv4();
+  let msg = {
+    fromPathServe: true,
+    scenario: "setParentValue",
+    key: key,
+    Data: {
+      type: 'object',
+      data: value,
+    },
+    Form: {
+      element: "input",
+      type: 'textarea',
+      name: name
+    },
+  } as Message;
+  let messenger = new Messenger(msg);
+  sendMessage(msg);
+  setListenerVariable()
+  
+  window.pathServeMessageListener!.hooks.push((event: MessageEvent<Message>) => {
+    if (!event.data.fromPathServe || event.data.key != messenger.state.key) {
+      return;
+    }
+    newValueHook(event.data.Data!.data as object)
+  });
+
+  const setValue = (value: object) => {
+    const clonedValue = _cloneDeep(value)
+    messenger.setState({ Data: { type: "object", data: clonedValue } });
+    newValueHook(clonedValue)
+  };
+
+  messenger.subscribe((message: Message) => {
+    sendMessage(message);
+  });
+  return {
+    setValue
+  };
+};
+
+export let useButton = (name : string, clickedHook: () => void) => {
+  let key = uuidv4();
+  let msg = {
+    fromPathServe: true,
+    scenario: "setParentValue",
+    key: key,
+    Data: null,
+    Form: {
+      element: "button",
+      name: name
+    },
+  } as Message;
+  let messenger = new Messenger(msg);
+  sendMessage(msg);
+  setListenerVariable()
+  
+  window.pathServeMessageListener!.hooks.push((event: MessageEvent<Message>) => {
+    if (!event.data.fromPathServe || event.data.key != messenger.state.key) {
+      return;
+    }
+    clickedHook()
+  });
+
+  const setValue = (value: object) => {
+    const clonedValue = _cloneDeep(value)
+    messenger.setState({ Data: { type: "object", data: clonedValue } });
+  };
+
+  messenger.subscribe((message: Message) => {
+    sendMessage(message);
+  });
+  return {
+    setValue
   };
 };
 
@@ -98,5 +214,10 @@ const setListenerVariable = () => {
 };
 
 const sendMessage = (message: Message) => {
-  window.parent.postMessage(message, "*");
+  try {
+    window.parent.postMessage(message, "*");
+  } catch (e) {
+    console.error(`can't send message to parent `,message, e)
+  }
+ 
 };

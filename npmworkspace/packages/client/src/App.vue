@@ -35,7 +35,7 @@
         </template>
       </div>
       <div>
-        <Control :key="updateControl" @update:message="sendMessage($event)" :messages="messages"></Control>
+        <Control :key="updateControl" @update:message="setSendMessage($event)" :messages="messages"></Control>
       </div>
     </div>
   </div>
@@ -75,9 +75,19 @@ function receiveMessage(event: MessageEvent<Message>) {
   updateControl.value = updateControl.value +1
 }
 
+function setSendMessage(message : Message) {
+  const index = _.findIndex(messages.value, ["key", message.key]);
+  if (index == -1) {
+    console.warn(`message doesn't exist message = `, message, ',messages=' ,messages.value)
+   return
+  }
+  messages.value[index] = message
+  sendMessage(message)
+}
 function sendMessage(message : Message) {
       iframe.value!.contentWindow!.postMessage(_.cloneDeep(message), '*');
 }
+
 
 </script>
 <style scoped>
