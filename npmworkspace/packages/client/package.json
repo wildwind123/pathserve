@@ -13,7 +13,7 @@
   ],
   "dependencies": {
     "@pathserve/client": "link:",
-    "@pathserve/messenger": "workspace:^0.0.50",
+    "@pathserve/messenger": "workspace:^0.0.53",
     "@vueuse/core": "^10.1.2",
     "axios": "^1.4.0",
     "interactjs": "^1.10.17",
