@@ -7,18 +7,15 @@ importers:
 
   packages/bin:
     specifiers:
-      '@pathserve/bin': 'link:'
       mkdirp: ^1.0.4
       ncp: ^2.0.0
     dependencies:
-      '@pathserve/bin': 'link:'
       mkdirp: 1.0.4
       ncp: 2.0.0
 
   packages/client:
     specifiers:
-      '@pathserve/client': 'link:'
-      '@pathserve/messenger': workspace:^0.0.56
+      '@pathserve/messenger': workspace:^0.0.57
       '@types/lodash': ^4.14.194
       '@types/node': ^20.1.3
       '@vitejs/plugin-vue': ^4.1.0
@@ -31,7 +28,6 @@ importers:
       vue: ^3.2.47
       vue-tsc: ^1.4.2
     dependencies:
-      '@pathserve/client': 'link:'
       '@pathserve/messenger': link:../messenger
       '@vueuse/core': 10.1.2_vue@3.3.2
       axios: 1.4.0
