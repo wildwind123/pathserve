@@ -38,7 +38,7 @@ importers:
 
   packages/client:
     specifiers:
-      '@pathserve/messenger': workspace:0.0.632-alpha
+      '@pathserve/messenger': workspace:0.0.633-alpha
       '@types/lodash': ^4.14.194
       '@types/node': ^20.1.3
       '@vitejs/plugin-vue': ^4.1.0
