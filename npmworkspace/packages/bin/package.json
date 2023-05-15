@@ -1,6 +1,6 @@
 {
   "name": "@pathserve/bin",
-  "version": "0.0.9",
+  "version": "0.0.50",
   "scripts": {
     "postinstall": "node postinstall.js"
   },
