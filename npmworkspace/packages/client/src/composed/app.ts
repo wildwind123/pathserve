@@ -8,7 +8,17 @@ export const getApiHost = () => {
   if (import.meta.env.VITE_API_HOST) {
     return import.meta.env.VITE_API_HOST;
   }
-  return document.location.origin;
+  const regex = /(http|https):\/\/([^.]*).([^.]*).(.*)$/gm;
+  const m = regex.exec(document.location.origin)
+  if (!m) {
+    console.error(`cant parse host`, document.location.origin, m)
+    return ""
+  }
+  if (!m[4]) {
+    console.error(`cant parse host`, document.location.origin, m)
+    return ""
+  }
+  return m[1] + '://api.' +m[4] ;
 };
 
 const info = reactive<{
@@ -32,6 +42,9 @@ const selectedKey = computed({
 })
 
 const selectedParam = computed(() => {
+  if (!info.params) {
+    return null
+  }
   for (let i = 0; i < info.params.length; i++) {
     if (info.params[i].key == selectedKey.value) {
       return info.params[i];

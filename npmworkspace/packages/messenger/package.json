@@ -1,6 +1,6 @@
 {
   "name": "@pathserve/messenger",
-  "version": "0.0.633-alpha",
+  "version": "0.0.634-alpha",
   "private": false,
   "type": "module",
   "files": [
