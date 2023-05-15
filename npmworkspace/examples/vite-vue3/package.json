@@ -13,9 +13,9 @@
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@pathserve/bin": "^0.0.61",
-    "@pathserve/messenger": "^0.0.61",
-    "@pathserve/client": "^0.0.61",
+    "@pathserve/bin": "^0.0.84",
+    "@pathserve/messenger": "^0.0.84",
+    "@pathserve/client": "^0.0.84",
     "@vitejs/plugin-vue": "^4.1.0",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",

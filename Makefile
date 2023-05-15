@@ -12,16 +12,15 @@ build_messenger:
 publish_packages:
 	pnpm publish --recursive --filter "@pathserve/messenger" --filter "@pathserve/client" --filter="@pathserve/bin" --no-git-checks
 
+change-update-version: change-version update-version
+
 change-version:
 	cd $(CURDIR)/npmworkspace/packages/bin && \
 	pnpm version ${version} && \
 	cd $(CURDIR)/npmworkspace/packages/client && \
 	pnpm version ${version} && \
 	cd $(CURDIR)/npmworkspace/packages/messenger && \
-	pnpm version ${version} && \
+	pnpm version ${version} 
+update-version:
 	cd $(CURDIR)/npmworkspace/packages/client && \
-	pnpm update @pathserve/messenger && \
-	cd $(CURDIR)/npmworkspace/examples/vite-vue3 && \
-	pnpm update @pathserve/messenger && \
-	pnpm update @pathserve/client && \
-	pnpm update @pathserve/bin
+	pnpm update @pathserve/messenger
