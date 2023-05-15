@@ -1,7 +1,7 @@
 export interface Message {
     fromPathServe: true,
     key: string,
-    scenario : 'setParentValue' | 'setChildValue'
+    scenario : 'setControlValue' | 'setComponentValue'
     Data: Value | null
     Form: FormInput | FormControl
 }

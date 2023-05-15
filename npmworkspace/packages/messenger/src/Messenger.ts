@@ -43,7 +43,7 @@ export let useString = (value: string , name : string, newValueHook: (newValue: 
   let key = uuidv4();
   let msg = {
     fromPathServe: true,
-    scenario: "setParentValue",
+    scenario: "setControlValue",
     key: key,
     Data: {
       type: "string",
@@ -67,7 +67,7 @@ export let useString = (value: string , name : string, newValueHook: (newValue: 
   });
 
   const setValue = (value: string) => {
-    messenger.setState({ Data: { type: "string", data: value } });
+    messenger.setState({ Data: { type: "string", data: value }, scenario: "setControlValue" });
     newValueHook(value)
   };
 
@@ -84,7 +84,7 @@ export let useNumber = (value: number , name : string, newValueHook: (newValue: 
   let key = uuidv4();
   let msg = {
     fromPathServe: true,
-    scenario: "setParentValue",
+    scenario: "setControlValue",
     key: key,
     Data: {
       type: 'number',
@@ -108,7 +108,7 @@ export let useNumber = (value: number , name : string, newValueHook: (newValue: 
   });
 
   const setValue = (value: number) => {
-    messenger.setState({ Data: { type: "number", data: value } });
+    messenger.setState({ Data: { type: "number", data: value }, scenario: "setControlValue" });
     newValueHook(value)
   };
 
@@ -124,7 +124,7 @@ export let useObject = (value: object , name : string, newValueHook: (newValue: 
   let key = uuidv4();
   let msg = {
     fromPathServe: true,
-    scenario: "setParentValue",
+    scenario: "setControlValue",
     key: key,
     Data: {
       type: 'object',
@@ -149,7 +149,7 @@ export let useObject = (value: object , name : string, newValueHook: (newValue: 
 
   const setValue = (value: object) => {
     const clonedValue = _cloneDeep(value)
-    messenger.setState({ Data: { type: "object", data: clonedValue } });
+    messenger.setState({ Data: { type: "object", data: clonedValue }, scenario: "setControlValue" });
     newValueHook(clonedValue)
   };
 
@@ -165,7 +165,7 @@ export let useButton = (name : string, clickedHook: () => void) => {
   let key = uuidv4();
   let msg = {
     fromPathServe: true,
-    scenario: "setParentValue",
+    scenario: "setControlValue",
     key: key,
     Data: null,
     Form: {
@@ -185,7 +185,7 @@ export let useButton = (name : string, clickedHook: () => void) => {
   });
 
   const setButtonName = (buttonName: string) => {
-    messenger.setState({ Form: { element: "button", name : buttonName} as FormControl } );
+    messenger.setState({ Form: { element: "button", name : buttonName} as FormControl, scenario: "setControlValue" },  );
   };
 
   messenger.subscribe((message: Message) => {

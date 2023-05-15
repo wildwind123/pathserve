@@ -98,5 +98,6 @@ const {setButtonName} = useButton("button", () => {
 
 onMounted(() => {
   setListener();
+  window.addEventListener("message", (m) => { console.log(m) }, false);
 });
 </script>

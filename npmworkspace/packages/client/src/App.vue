@@ -86,7 +86,9 @@ function setSendMessage(message : Message) {
   sendMessage(message)
 }
 function sendMessage(message : Message) {
-      iframe.value!.contentWindow!.postMessage(_.cloneDeep(message), '*');
+      const clonedMessage=  _.cloneDeep(message)
+      clonedMessage.scenario = "setComponentValue"
+      iframe.value!.contentWindow!.postMessage(clonedMessage, '*');
 }
 
 
