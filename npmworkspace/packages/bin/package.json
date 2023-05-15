@@ -1,9 +1,13 @@
 {
   "name": "@pathserve/bin",
-  "version": "0.0.57",
+  "version": "0.0.59",
   "scripts": {
     "postinstall": "node postinstall.js"
   },
+  "files": [
+    "bin",
+    "postinstall.js"
+  ],
   "dependencies": {
     "mkdirp": "^1.0.4",
     "ncp": "^2.0.0"
