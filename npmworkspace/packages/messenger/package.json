@@ -26,7 +26,6 @@
     "vite-plugin-dts": "^2.3.0"
   },
   "dependencies": {
-    "@pathserve/messenger": "link:",
     "@types/lodash": "^4.14.194",
     "@types/uuid": "^9.0.1",
     "lodash": "^4.17.21",
