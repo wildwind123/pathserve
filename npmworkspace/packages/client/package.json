@@ -1,7 +1,7 @@
 {
   "name": "@pathserve/client",
   "private": false,
-  "version": "0.0.55",
+  "version": "0.0.56",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,7 +13,7 @@
   ],
   "dependencies": {
     "@pathserve/client": "link:",
-    "@pathserve/messenger": "workspace:^0.0.55",
+    "@pathserve/messenger": "workspace:^0.0.56",
     "@vueuse/core": "^10.1.2",
     "axios": "^1.4.0",
     "interactjs": "^1.10.17",
