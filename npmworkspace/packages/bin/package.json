@@ -1,6 +1,6 @@
 {
-  "name": "pathserve",
-  "version": "0.0.600-alpha",
+  "name": "@pathserve/bin",
+  "version": "0.0.605-alpha",
   "scripts": {
     "postinstall": "node postinstall.js"
   },
@@ -17,5 +17,8 @@
   "goBinary": {
     "name": "pathserve",
     "path": "./bin"
+  },
+  "bin": {
+    "pathserve": "bin/pathserve"
   }
 }

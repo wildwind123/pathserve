@@ -10,7 +10,7 @@ build_messenger:
 	cd npmworkspace/packages/messenger && pnpm install && pnpm build
 
 publish_packages:
-	pnpm publish --recursive --filter "@pathserve/messenger" --filter "@pathserve/client" --filter="pathserve" --no-git-checks
+	pnpm publish --recursive --filter "@pathserve/messenger" --filter "@pathserve/client" --filter="@pathserve/bin" --no-git-checks
 
 change-update-version: change-version update-version
 

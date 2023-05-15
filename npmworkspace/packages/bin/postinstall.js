@@ -8,7 +8,7 @@ var path = require("path");
 var  fs = require('fs');
 var mkdirp = require('mkdirp')
 var destinationFolder = path.join(__dirname, "bin");
-throw Error(destinationFolder)
+
 // Mapping from Node's `process.arch` to Golang's `$GOARCH`
 var ARCH_MAPPING = {
   ia32: "386",
