@@ -12,7 +12,7 @@ COPY pathserve .
 RUN mkdir bin
 # Build the project for each target platform
 RUN GOOS=linux GOARCH=amd64 go build -o bin/pathserve-amd64-linux
-RUN GOOS=windows GOARCH=amd64 go build -o bin/pathserve-amd64-windows.exe
+RUN GOOS=windows GOARCH=amd64 go build -o bin/pathserve-amd64-win32.exe
 RUN GOOS=darwin GOARCH=amd64 go build -o bin/pathserve-amd64-mac
 
 

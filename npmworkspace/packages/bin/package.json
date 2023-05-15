@@ -1,6 +1,6 @@
 {
   "name": "@pathserve/bin",
-  "version": "0.0.605-alpha",
+  "version": "0.0.632-alpha",
   "scripts": {
     "postinstall": "node postinstall.js"
   },
@@ -11,6 +11,7 @@
     "bin/pathserve-amd64-windows.exe"
   ],
   "dependencies": {
+    "fs-extra": "^11.1.1",
     "mkdirp": "^1.0.4",
     "ncp": "^2.0.0"
   },

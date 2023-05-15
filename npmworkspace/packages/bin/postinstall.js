@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 
 "use strict";
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -6,8 +5,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 const ncp = require("ncp").ncp;
 var path = require("path");
 var  fs = require('fs');
-var mkdirp = require('mkdirp')
-var destinationFolder = path.join(__dirname, "bin");
+const fsExtra = require('fs-extra');
 
 // Mapping from Node's `process.arch` to Golang's `$GOARCH`
 var ARCH_MAPPING = {
@@ -110,16 +108,18 @@ async function install(callback) {
     );
   }
   
-  await mkdirp(destinationFolder);
-  const destinationFile = destinationFolder + '/' + opts.binName;
-  console.log("destination", destinationFile);
-  // const cmd = `cp ${src} ${value}/${opts.binName}`.;
-  ncp(src, destinationFile, function (err) {
-    if (err) {
-      return console.error(err);
-    }
-    console.log("Installed successfully!");
-  });
+  const destinationFile = '.' + '/bin/' + opts.binName;
+  if (process.platform == 'win32') {
+    destinationFile = destinationFile + ".exe"
+  }
+  console.log('destinationFile', destinationFile)
+
+ 
+  fsExtra.copySync(src, destinationFile);
+  
+  if (process.platform != 'win32') {
+    fsExtra.chmodSync(destinationFile, 0o755);
+  }
 }
 
 install(function (err) {

@@ -3,7 +3,9 @@ build_publish_all: build_all publish_packages
 build_all: build_messenger build_client build_pathserve
 
 build_pathserve:
-	docker build -t pathserve . && docker run -v $(CURDIR)/npmworkspace/packages/bin:/build -t pathserve cp -R /app/bin /build
+	docker build -t pathserve . && \
+	docker run -u $(shell id -u):$(shell id -g) -v $(CURDIR)/npmworkspace/packages/bin:/build -t pathserve cp -R /app/bin /build && \
+	chown -R $(shell id -u):$(shell id -g) $(CURDIR)/npmworkspace/packages/bin
 build_client:
 	cd npmworkspace/packages/client && pnpm install && pnpm build
 build_messenger:
