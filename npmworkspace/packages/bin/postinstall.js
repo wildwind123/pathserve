@@ -7,7 +7,8 @@ const ncp = require("ncp").ncp;
 var path = require("path");
 var  fs = require('fs');
 var mkdirp = require('mkdirp')
-
+var destinationFolder = path.join(__dirname, "bin");
+throw Error(destinationFolder)
 // Mapping from Node's `process.arch` to Golang's `$GOARCH`
 var ARCH_MAPPING = {
   ia32: "386",
@@ -108,8 +109,7 @@ async function install(callback) {
       `os does not supported ${src}, you can try compile patheserve from source code`
     );
   }
-  let binDir = await execShellCommand("npm bin");
-  const destinationFolder = binDir.replace(/(\r\n|\n|\r)/gm, "")
+  
   await mkdirp(destinationFolder);
   const destinationFile = destinationFolder + '/' + opts.binName;
   console.log("destination", destinationFile);
@@ -119,18 +119,6 @@ async function install(callback) {
       return console.error(err);
     }
     console.log("Installed successfully!");
-  });
-}
-
-function execShellCommand(cmd) {
-  const exec = require('child_process').exec;
-  return new Promise((resolve, reject) => {
-      exec(cmd, (error, stdout, stderr) => {
-          if (error) {
-              console.warn(error);
-          }
-          resolve(stdout? stdout : stderr);
-      });
   });
 }
 
