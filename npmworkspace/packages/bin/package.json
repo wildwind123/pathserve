@@ -1,12 +1,14 @@
 {
   "name": "@pathserve/bin",
-  "version": "0.0.59",
+  "version": "0.0.60",
   "scripts": {
     "postinstall": "node postinstall.js"
   },
   "files": [
-    "bin",
-    "postinstall.js"
+    "postinstall.js",
+    "bin/pathserve-amd64-linux",
+    "bin/pathserve-amd64-mac",
+    "bin/pathserve-amd64-windows.exe"
   ],
   "dependencies": {
     "mkdirp": "^1.0.4",
