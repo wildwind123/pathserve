@@ -1,6 +1,6 @@
 <template>
     <div>
-        <template v-if="props.message.Form.element == 'button'">
+        <template v-if="props.message.Form && props.message.Form.element == 'button'">
             <button class="bulma-button bulma-is-small" @click="emit('clicked')">{{ props.message.name }}</button>
         </template>
     </div>

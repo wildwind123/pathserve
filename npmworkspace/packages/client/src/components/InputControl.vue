@@ -1,7 +1,8 @@
 <template>
     <div>
         <label class="bulma-label bulma-is-small">{{ props.message.name }}</label>
-        <template  v-if="props.message.Form.element =='input' && props.message.Form.type == 'text' " >
+        <template v-if="props.message.Form">
+            <template  v-if="props.message.Form.element =='input' && props.message.Form.type == 'text' " >
             <input class="bulma-input bulma-is-small" @input="emit('update:message', {...props.message, Data: {
                 data: ($event.target as HTMLInputElement).value,
                 type: 'string'
@@ -21,6 +22,7 @@
             <pre>
                 {{ props.message }}
             </pre>
+        </template>
         </template>
     </div>
 </template>

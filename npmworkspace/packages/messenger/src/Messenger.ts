@@ -38,7 +38,7 @@ class Messenger {
 
 export interface Message extends M {}
 
-export let stringMessage = (
+export let useString = (
   uniqueName: string,
   value: string,
   newValueHook: (newValue: string) => void
@@ -57,8 +57,7 @@ export let stringMessage = (
     },
   } as Message;
   let messenger = new Messenger(msg);
-  sendMessage(msg);
-  setListenerVariable();
+  sendMessageAndSetListener(msg)
 
   window.pathServeMessageListener.addHook(
     uniqueName,
@@ -106,8 +105,7 @@ export let useNumber = (
     },
   } as Message;
   let messenger = new Messenger(msg);
-  sendMessage(msg);
-  setListenerVariable();
+  sendMessageAndSetListener(msg)
 
   window.pathServeMessageListener.addHook(
     uniqueName,
@@ -155,8 +153,8 @@ export let useObject = (
     },
   } as Message;
   let messenger = new Messenger(msg);
-  sendMessage(msg);
-  setListenerVariable();
+
+  sendMessageAndSetListener(msg)
 
   window.pathServeMessageListener.addHook(
     uniqueName,
@@ -197,9 +195,9 @@ export let useButton = (uniqueName: string, clickedHook: () => void) => {
     },
   } as Message;
   let messenger = new Messenger(msg);
-  sendMessage(msg);
-  setListenerVariable();
 
+  sendMessageAndSetListener(msg)
+  
   window.pathServeMessageListener.addHook(
     uniqueName,
     (event: MessageEvent<Message>) => {
@@ -228,8 +226,19 @@ export const setListener = () => {
   window.pathServeMessageListener.setListener();
 };
 
+const sendMessageAndSetListener = (message: Message) => {
+  setListenerVariable()
+  sendMessage(message)
+}
+
 const setListenerVariable = () => {
   if (!window.pathServeMessageListener) {
+    let msg = {
+      fromPathServe: true,
+      scenario: "clearControl",
+      name: "",
+    } as Message;
+    sendMessage(msg)
     window.pathServeMessageListener = new Listener();
   }
 };

@@ -63,7 +63,12 @@ onMounted(() => {
   app.request();
 });
 function receiveMessage(event: MessageEvent<Message>) {
-  if (!event.data.fromPathServe) {
+  if (event.data.scenario == 'clearControl') {
+    messages.value = []
+    return
+  }
+
+  if (!event.data.fromPathServe || event.data.scenario != 'setControlValue') {
     return;
   }
   const index = _.findIndex(messages.value, ["name", event.data.name]);
