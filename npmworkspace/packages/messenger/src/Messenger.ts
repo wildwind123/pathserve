@@ -41,7 +41,7 @@ export interface Message extends M {}
 export let useString = (
   uniqueName: string,
   value: string,
-  newValueHook: (newValue: string) => void
+  recivedNewValue: (newValue: string) => void
 ) => {
   let msg = {
     fromPathServe: true,
@@ -68,28 +68,28 @@ export let useString = (
       ) {
         return;
       }
-      newValueHook(event.data.Data!.data as string);
+      recivedNewValue(event.data.Data!.data as string);
     }
   );
 
-  const setValue = (value: string) => {
+  const sendValue = (value: string) => {
     messenger.setState({
       Data: { type: "string", data: value },
       scenario: "setControlValue",
     });
-    newValueHook(value);
+    recivedNewValue(value);
   };
 
   messenger.subscribe((message: Message) => {
     sendMessage(message);
   });
-  return [setValue];
+  return [sendValue];
 };
 
 export let useNumber = (
   uniqueName: string,
   value: number,
-  newValueHook: (newValue: number) => void
+  recivedNewValue: (newValue: number) => void
 ) => {
   let msg = {
     fromPathServe: true,
@@ -116,7 +116,7 @@ export let useNumber = (
       ) {
         return;
       }
-      newValueHook(event.data.Data!.data as number);
+      recivedNewValue(event.data.Data!.data as number);
     }
   );
 
@@ -125,7 +125,7 @@ export let useNumber = (
       Data: { type: "number", data: value },
       scenario: "setControlValue",
     });
-    newValueHook(value);
+    recivedNewValue(value);
   };
 
   messenger.subscribe((message: Message) => {
@@ -137,7 +137,7 @@ export let useNumber = (
 export let useObject = (
   uniqueName: string,
   value: object,
-  newValueHook: (newValue: object) => void
+  recivedNewValue: (newValue: object) => void
 ) => {
   let msg = {
     fromPathServe: true,
@@ -165,26 +165,26 @@ export let useObject = (
       ) {
         return;
       }
-      newValueHook(event.data.Data!.data as object);
+      recivedNewValue(event.data.Data!.data as object);
     }
   );
 
-  const setValue = (value: object) => {
+  const sendValue = (value: object) => {
     const clonedValue = _cloneDeep(value);
     messenger.setState({
       Data: { type: "object", data: clonedValue },
       scenario: "setControlValue",
     });
-    newValueHook(clonedValue);
+    recivedNewValue(clonedValue);
   };
 
   messenger.subscribe((message: Message) => {
     sendMessage(message);
   });
-  return [setValue];
+  return [sendValue];
 };
 
-export let useButton = (uniqueName: string, clickedHook: () => void) => {
+export let useButton = (uniqueName: string, recivedSignal: () => void) => {
   let msg = {
     fromPathServe: true,
     scenario: "setControlValue",
@@ -207,7 +207,7 @@ export let useButton = (uniqueName: string, clickedHook: () => void) => {
       ) {
         return;
       }
-      clickedHook();
+      recivedSignal();
     }
   );
 
