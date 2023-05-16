@@ -63,21 +63,26 @@ onMounted(() => {
   app.request();
 });
 function receiveMessage(event: MessageEvent<Message>) {
-  if (!event.data.fromPathServe) {
+  if (event.data.scenario == 'clearControl') {
+    messages.value = []
+    return
+  }
+
+  if (!event.data.fromPathServe || event.data.scenario != 'setControlValue') {
     return;
   }
-  const index = _.findIndex(messages.value, ["key", event.data.key]);
+  const index = _.findIndex(messages.value, ["name", event.data.name]);
   if (index == -1) {
     messages.value.push(event.data);
     return;
   }
   // console.log('new value', event.data)
   messages.value[index] = event.data;
-  updateControl.value = updateControl.value +1
+  // updateControl.value = updateControl.value +1
 }
 
 function setSendMessage(message : Message) {
-  const index = _.findIndex(messages.value, ["key", message.key]);
+  const index = _.findIndex(messages.value, ["name", message.name]);
   if (index == -1) {
     console.warn(`message doesn't exist message = `, message, ',messages=' ,messages.value)
    return

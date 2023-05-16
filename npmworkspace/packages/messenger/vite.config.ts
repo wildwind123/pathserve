@@ -13,5 +13,6 @@ export default defineConfig({
             fileName: 'messenger-lib',
             formats: ['es', 'cjs', 'umd', 'iife'],
         },
+        sourcemap: true
     }
 })

@@ -1,9 +1,9 @@
 export interface Message {
     fromPathServe: true,
-    key: string,
-    scenario : 'setControlValue' | 'setComponentValue'
+    name: string,
+    scenario : 'setControlValue' | 'setComponentValue' | 'clearControl'
     Data: Value | null
-    Form: FormInput | FormControl
+    Form: FormInput | FormControl | null
 }
 
 export type Value = ValueString | ValueNumber | ValueObject
@@ -23,12 +23,10 @@ export interface ValueObject {
 }
 
 export interface FormInput {
-    name: string
     element: 'input'
     type: 'text' | 'number' | 'textarea'
 }
 
 export interface FormControl {
-    name: string
     element: 'button'
 }
