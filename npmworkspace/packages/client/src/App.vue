@@ -66,7 +66,7 @@ function receiveMessage(event: MessageEvent<Message>) {
   if (!event.data.fromPathServe) {
     return;
   }
-  const index = _.findIndex(messages.value, ["key", event.data.key]);
+  const index = _.findIndex(messages.value, ["name", event.data.name]);
   if (index == -1) {
     messages.value.push(event.data);
     return;
@@ -77,7 +77,7 @@ function receiveMessage(event: MessageEvent<Message>) {
 }
 
 function setSendMessage(message : Message) {
-  const index = _.findIndex(messages.value, ["key", message.key]);
+  const index = _.findIndex(messages.value, ["name", message.name]);
   if (index == -1) {
     console.warn(`message doesn't exist message = `, message, ',messages=' ,messages.value)
    return

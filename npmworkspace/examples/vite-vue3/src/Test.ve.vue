@@ -46,7 +46,7 @@
   <pre>
     {{ buttonClickedCount }}
   </pre>
-  <button @click="setButtonName('new button name')">change button name</button>
+
   <hr>
 </template>
 <script lang="ts" setup>
@@ -91,7 +91,7 @@ const { setValue: setObject } = useObject(
 );
 // button 1
 const buttonClickedCount = ref(0)
-const {setButtonName} = useButton("button", () => {
+useButton("button", () => {
     buttonClickedCount.value = buttonClickedCount.value + 1
 })
 
