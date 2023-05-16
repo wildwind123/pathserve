@@ -185,5 +185,6 @@ func (h *Vite) GetViteHtml(viteHost, viteTempalteHtml, viteScriptPath string) ([
 	}
 	newHtmlByte := bytes.Replace(htmlByte, []byte("{{vite_client}}"), []byte(viteClient), -1)
 	newHtmlByte = bytes.Replace(newHtmlByte, []byte("{{vite_script}}"), []byte(viteScript), -1)
+	newHtmlByte = bytes.Replace(newHtmlByte, []byte("{{vite_host}}"), []byte(viteHost), -1)
 	return newHtmlByte, nil
 }
