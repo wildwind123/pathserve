@@ -24,5 +24,5 @@ change-version:
 	cd $(CURDIR)/npmworkspace/packages/messenger && \
 	pnpm version ${version} 
 update-version:
-	cd $(CURDIR)/npmworkspace/packages/client && \
-	pnpm update @pathserve/messenger
+	cd $(CURDIR)/npmworkspace && \
+	pnpm -r update @pathserve/bin @pathserve/client @pathserve/messenger
