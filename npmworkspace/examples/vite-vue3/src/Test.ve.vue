@@ -1,25 +1,27 @@
 <template>
   <hr>
   <p >input 1</p>
-  <button @click="setValue('button')">change input 1 to 'button'</button>
+  <p>
+    <button @click="setInput1('button')">change input 1 to 'button'</button>
+  </p>
   <input
     type="text"
     :value="testValue"
-    @input="setValue(($event.target as HTMLInputElement).value)"
+    @input="setInput1(($event.target as HTMLInputElement).value)"
   />
   <hr>
   <p>input 2</p>
   <input
     type="text"
     :value="testValue2"
-    @input="s.setValue(($event.target as HTMLInputElement).value)"
+    @input="setInput2(($event.target as HTMLInputElement).value)"
   />
   <hr>
   <p>input 3</p>
   <input
     type="number"
     :value="testNumberValue"
-    @input="setTestNumber(parseInt(($event.target as HTMLInputElement).value))"
+    @input="setInput3(parseInt(($event.target as HTMLInputElement).value))"
   />
   <hr>
   <label>input 4</label>
@@ -35,7 +37,7 @@
           id: testObject.id + 1,
           value: testObject.id + testObject.value,
         };
-        setObject(testObject);
+        setInput4(testObject);
       }
     "
   >
@@ -65,28 +67,28 @@ interface testObject {
 }
 // input 1
 const testValue = ref("input 1");
-const { setValue } = useString(testValue.value, "input 1", (value) => {
+const [setInput1] = useString("input 1",testValue.value, (value) => {
   testValue.value = value;
 });
 //  input 2
 const testValue2 = ref(" input 2");
-const s = useString(
-  testValue2.value,
+const [setInput2] = useString(
   "input 2",
+  testValue2.value,
   (value) => (testValue2.value = value)
 );
 // input 3
 const testNumberValue = ref(0);
-const { setValue: setTestNumber } = useNumber(
-  testNumberValue.value,
+const [ setInput3 ] = useNumber(
   "input 3",
+  testNumberValue.value,
   (value) => (testNumberValue.value = value)
 );
 //  input 4
 const testObject = ref<testObject>({ id: 1, value: "input 4" });
-const { setValue: setObject } = useObject(
-  toRaw(testObject.value),
+const [setInput4] = useObject(
   "input 4",
+  toRaw(testObject.value),
   (value) => (testObject.value = value as testObject)
 );
 // button 1
@@ -98,6 +100,5 @@ useButton("button", () => {
 
 onMounted(() => {
   setListener();
-  window.addEventListener("message", (m) => { console.log(m) }, false);
 });
 </script>

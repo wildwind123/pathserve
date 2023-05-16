@@ -73,7 +73,7 @@ function receiveMessage(event: MessageEvent<Message>) {
   }
   // console.log('new value', event.data)
   messages.value[index] = event.data;
-  updateControl.value = updateControl.value +1
+  // updateControl.value = updateControl.value +1
 }
 
 function setSendMessage(message : Message) {

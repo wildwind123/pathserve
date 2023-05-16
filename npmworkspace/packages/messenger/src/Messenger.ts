@@ -1,6 +1,6 @@
 import { Listener } from "./Listener";
 import { Message as M } from "./Message";
-import {cloneDeep as _cloneDeep} from "lodash"
+import { cloneDeep as _cloneDeep } from "lodash";
 
 declare global {
   interface Window {
@@ -36,9 +36,13 @@ class Messenger {
   }
 }
 
-export interface Message extends M{}
+export interface Message extends M {}
 
-export let useString = (value: string , uniqueName : string, newValueHook: (newValue: string) => void) => {
+export let stringMessage = (
+  uniqueName: string,
+  value: string,
+  newValueHook: (newValue: string) => void
+) => {
   let msg = {
     fromPathServe: true,
     scenario: "setControlValue",
@@ -49,112 +53,140 @@ export let useString = (value: string , uniqueName : string, newValueHook: (newV
     },
     Form: {
       element: "input",
-      type: "text"
+      type: "text",
     },
   } as Message;
   let messenger = new Messenger(msg);
   sendMessage(msg);
-  setListenerVariable()
-  
-  window.pathServeMessageListener!.hooks.push((event: MessageEvent<Message>) => {
-    if (!event.data.fromPathServe || event.data.name != messenger.state.name) {
-      return;
+  setListenerVariable();
+
+  window.pathServeMessageListener.addHook(
+    uniqueName,
+    (event: MessageEvent<Message>) => {
+      if (
+        !event.data.fromPathServe ||
+        event.data.name != messenger.state.name
+      ) {
+        return;
+      }
+      newValueHook(event.data.Data!.data as string);
     }
-    newValueHook(event.data.Data!.data as string)
-  });
+  );
 
   const setValue = (value: string) => {
-    messenger.setState({ Data: { type: "string", data: value }, scenario: "setControlValue" });
-    newValueHook(value)
+    messenger.setState({
+      Data: { type: "string", data: value },
+      scenario: "setControlValue",
+    });
+    newValueHook(value);
   };
 
   messenger.subscribe((message: Message) => {
     sendMessage(message);
   });
-  return {
-    setValue
-  };
+  return [setValue];
 };
 
-
-export let useNumber = (value: number , uniqueName : string, newValueHook: (newValue: number) => void) => {
+export let useNumber = (
+  uniqueName: string,
+  value: number,
+  newValueHook: (newValue: number) => void
+) => {
   let msg = {
     fromPathServe: true,
     scenario: "setControlValue",
     name: uniqueName,
     Data: {
-      type: 'number',
+      type: "number",
       data: value,
     },
     Form: {
       element: "input",
-      type: 'number'
+      type: "number",
     },
   } as Message;
   let messenger = new Messenger(msg);
   sendMessage(msg);
-  setListenerVariable()
-  
-  window.pathServeMessageListener!.hooks.push((event: MessageEvent<Message>) => {
-    if (!event.data.fromPathServe || event.data.name != messenger.state.name) {
-      return;
+  setListenerVariable();
+
+  window.pathServeMessageListener.addHook(
+    uniqueName,
+    (event: MessageEvent<Message>) => {
+      if (
+        !event.data.fromPathServe ||
+        event.data.name != messenger.state.name
+      ) {
+        return;
+      }
+      newValueHook(event.data.Data!.data as number);
     }
-    newValueHook(event.data.Data!.data as number)
-  });
+  );
 
   const setValue = (value: number) => {
-    messenger.setState({ Data: { type: "number", data: value }, scenario: "setControlValue" });
-    newValueHook(value)
+    messenger.setState({
+      Data: { type: "number", data: value },
+      scenario: "setControlValue",
+    });
+    newValueHook(value);
   };
 
   messenger.subscribe((message: Message) => {
     sendMessage(message);
   });
-  return {
-    setValue
-  };
+  return [setValue];
 };
 
-export let useObject = (value: object , uniqueName : string, newValueHook: (newValue: object) => void) => {
+export let useObject = (
+  uniqueName: string,
+  value: object,
+  newValueHook: (newValue: object) => void
+) => {
   let msg = {
     fromPathServe: true,
     scenario: "setControlValue",
     name: uniqueName,
     Data: {
-      type: 'object',
+      type: "object",
       data: value,
     },
     Form: {
       element: "input",
-      type: 'textarea'
+      type: "textarea",
     },
   } as Message;
   let messenger = new Messenger(msg);
   sendMessage(msg);
-  setListenerVariable()
-  
-  window.pathServeMessageListener!.hooks.push((event: MessageEvent<Message>) => {
-    if (!event.data.fromPathServe || event.data.name != messenger.state.name) {
-      return;
+  setListenerVariable();
+
+  window.pathServeMessageListener.addHook(
+    uniqueName,
+    (event: MessageEvent<Message>) => {
+      if (
+        !event.data.fromPathServe ||
+        event.data.name != messenger.state.name
+      ) {
+        return;
+      }
+      newValueHook(event.data.Data!.data as object);
     }
-    newValueHook(event.data.Data!.data as object)
-  });
+  );
 
   const setValue = (value: object) => {
-    const clonedValue = _cloneDeep(value)
-    messenger.setState({ Data: { type: "object", data: clonedValue }, scenario: "setControlValue" });
-    newValueHook(clonedValue)
+    const clonedValue = _cloneDeep(value);
+    messenger.setState({
+      Data: { type: "object", data: clonedValue },
+      scenario: "setControlValue",
+    });
+    newValueHook(clonedValue);
   };
 
   messenger.subscribe((message: Message) => {
     sendMessage(message);
   });
-  return {
-    setValue
-  };
+  return [setValue];
 };
 
-export let useButton = (uniqueName : string, clickedHook: () => void) => {
+export let useButton = (uniqueName: string, clickedHook: () => void) => {
   let msg = {
     fromPathServe: true,
     scenario: "setControlValue",
@@ -166,14 +198,20 @@ export let useButton = (uniqueName : string, clickedHook: () => void) => {
   } as Message;
   let messenger = new Messenger(msg);
   sendMessage(msg);
-  setListenerVariable()
-  
-  window.pathServeMessageListener!.hooks.push((event: MessageEvent<Message>) => {
-    if (!event.data.fromPathServe || event.data.name != messenger.state.name) {
-      return;
+  setListenerVariable();
+
+  window.pathServeMessageListener.addHook(
+    uniqueName,
+    (event: MessageEvent<Message>) => {
+      if (
+        !event.data.fromPathServe ||
+        event.data.name != messenger.state.name
+      ) {
+        return;
+      }
+      clickedHook();
     }
-    clickedHook()
-  });
+  );
 
   messenger.subscribe((message: Message) => {
     sendMessage(message);
@@ -200,7 +238,6 @@ const sendMessage = (message: Message) => {
   try {
     window.parent.postMessage(message, "*");
   } catch (e) {
-    console.error(`can't send message to parent `,message, e)
+    console.error(`can't send message to parent `, message, e);
   }
- 
 };

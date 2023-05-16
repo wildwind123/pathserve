@@ -1,15 +1,26 @@
 import { Message } from "./Message";
 
 export class Listener { 
-    hooks : ((event: MessageEvent)=> void)[] = []
+    hooks : Map<string, (event: MessageEvent) => void> | undefined 
     scenario = ""
+    listenerIsSet = false
     setListener(scenario : Message['scenario'] = 'setComponentValue') {
+        if (this.listenerIsSet) {
+            return
+        }
         this.scenario = scenario
-        window.addEventListener("message", window.pathServeMessageListener.callHooks.bind(this), false);
+        window.addEventListener("message", this.callHooks.bind(this), false);
+        this.listenerIsSet = true
+    }
+
+    setHooksIfNotDefined() {
+        if (!this.hooks) {
+            this.hooks = new Map([])
+        }
     }
 
     callHooks(event: MessageEvent<Message>) {
-        if (!window.pathServeMessageListener.hooks) {
+        if (!this.hooks) {
             return;
         }
         if (!event.data.fromPathServe) {
@@ -19,9 +30,23 @@ export class Listener {
             return
         }
 
-        for (let i = 0; i < window.pathServeMessageListener.hooks.length; i++) {
-            window.pathServeMessageListener.hooks[i](event)
+        for (const x of this.hooks.keys()) {
+            const hook = this.hooks.get(x)
+            if (!hook) {
+                console.error('cant find hook with name', event.data.name)
+                return
+            }
+            hook(event)
         }
+    }
+
+    addHook(name: string, hook : (event: MessageEvent) => void) {
+        this.setHooksIfNotDefined()
+        if (!this.hooks) {
+            console.error('cant add hook, this.hooks is not defined')
+            return
+        }
+        this.hooks.set(name, hook)
     }
 
     removeListener() {
