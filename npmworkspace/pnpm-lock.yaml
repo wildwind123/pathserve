@@ -5,6 +5,12 @@ importers:
   .:
     specifiers: {}
 
+  examples/pathserve:
+    specifiers:
+      '@pathserve/bin': workspace:^0.0.640-alpha
+    devDependencies:
+      '@pathserve/bin': link:../../packages/bin
+
   examples/vite-react:
     specifiers:
       '@pathserve/bin': workspace:^0.0.640-alpha

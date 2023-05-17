@@ -1,0 +1,13 @@
+{
+    "name": "pathserve",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+      "pathserve": "pathserve"
+    },
+    "devDependencies": {
+      "@pathserve/bin": "workspace:^0.0.640-alpha"
+    }
+  }
+  

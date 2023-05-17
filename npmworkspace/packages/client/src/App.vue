@@ -42,7 +42,7 @@
 </template>
 <script lang="ts" setup>
 import { useApp, paramUrl } from "@/composed/app";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import MenuListVue from "@/components/MenuList.vue";
 import NavbarVue from "@/components/Navbar.vue";
 import ResizeBlock from "@/components/ResizeBlock.vue";
@@ -57,6 +57,13 @@ const iframe = ref<HTMLIFrameElement | null>(null);
 
 const messages = ref<Message[]>([]);
 const updateControl = ref(0)
+
+watch(app.selectedParam, (newValue, oldValue ) => {
+  if (newValue?.key != oldValue?.key) {
+    // clear control panel fro new component
+    messages.value = []
+  }
+})
 
 onMounted(() => {
   window.addEventListener("message", receiveMessage, false);

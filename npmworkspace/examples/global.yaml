@@ -1,0 +1,30 @@
+server:
+  host: :8086
+handler_configs:
+  book:
+    handler: index
+    work_dir: vite-react/node_modules/@pathserve/client/dist
+  vr:
+    handler: vite
+    work_dir: './vite-react'
+    watch_dir: './vite-react/src'
+    params:
+      html_template: vite-react/node_modules/@pathserve/client/templates/react-template.html
+      script_template: vite-react/node_modules/@pathserve/client/templates/react-template.tsx
+      auto_gen_dir: vite-react/node_modules/@pathserve/client/autogen
+      dir_public: vite-react/public
+      host: http://localhost:5024
+  vv:
+    handler: vite
+    work_dir: './vite-vue3'
+    watch_dir: './vite-vue3/src'
+    params:
+      html_template: vite-vue3/node_modules/@pathserve/client/templates/template.html
+      script_template: vite-vue3/node_modules/@pathserve/client/templates/vue3-template.ts
+      auto_gen_dir: vite-vue3/node_modules/@pathserve/client/autogen
+      dir_public: vite-vue3/public
+      host: http://localhost:5023
+host_params:
+  - path: vite-vue3/vite-react/node_modules/@pathserve/client/dist/index.html
+    key: index
+    handler_config: ""
