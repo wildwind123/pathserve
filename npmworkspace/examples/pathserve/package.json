@@ -1,14 +1,13 @@
 {
-    "name": "pathserve",
-    "private": true,
-    "version": "0.0.0",
-    "type": "module",
-    "scripts": {
-      "pathserve": "pathserve"
-    },
-    "devDependencies": {
-      "@pathserve/client": "workspace:^0.0.640-alpha",
-      "@pathserve/bin": "workspace:^0.0.640-alpha"
-    }
+  "name": "pathserve",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "pathserve": "pathserve"
+  },
+  "devDependencies": {
+    "@pathserve/bin": "workspace:0.0.641-alpha",
+    "@pathserve/client": "workspace:0.0.641-alpha"
   }
-  
+}

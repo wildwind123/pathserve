@@ -7,17 +7,17 @@ importers:
 
   examples/pathserve:
     specifiers:
-      '@pathserve/bin': workspace:^0.0.640-alpha
-      '@pathserve/client': workspace:^0.0.640-alpha
+      '@pathserve/bin': workspace:0.0.641-alpha
+      '@pathserve/client': workspace:0.0.641-alpha
     devDependencies:
       '@pathserve/bin': link:../../packages/bin
       '@pathserve/client': link:../../packages/client
 
   examples/vite-react:
     specifiers:
-      '@pathserve/bin': workspace:^0.0.640-alpha
-      '@pathserve/client': workspace:^0.0.640-alpha
-      '@pathserve/messenger': workspace:^0.0.640-alpha
+      '@pathserve/bin': workspace:0.0.641-alpha
+      '@pathserve/client': workspace:0.0.641-alpha
+      '@pathserve/messenger': workspace:0.0.641-alpha
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
       '@typescript-eslint/eslint-plugin': ^5.57.1
@@ -50,7 +50,7 @@ importers:
 
   examples/vite-vanilla:
     specifiers:
-      '@pathserve/messenger': workspace:^0.0.640-alpha
+      '@pathserve/messenger': workspace:0.0.641-alpha
       typescript: ^5.0.2
       vite: ^4.3.2
     devDependencies:
@@ -60,9 +60,9 @@ importers:
 
   examples/vite-vue3:
     specifiers:
-      '@pathserve/bin': workspace:^0.0.640-alpha
-      '@pathserve/client': workspace:^0.0.640-alpha
-      '@pathserve/messenger': workspace:^0.0.640-alpha
+      '@pathserve/bin': workspace:0.0.641-alpha
+      '@pathserve/client': workspace:0.0.641-alpha
+      '@pathserve/messenger': workspace:0.0.641-alpha
       '@vitejs/plugin-vue': ^4.1.0
       typescript: ^5.0.2
       vite: ^4.3.2
@@ -91,7 +91,7 @@ importers:
 
   packages/client:
     specifiers:
-      '@pathserve/messenger': workspace:0.0.640-alpha
+      '@pathserve/messenger': workspace:0.0.641-alpha
       '@types/lodash': ^4.14.194
       '@types/node': ^20.1.3
       '@vitejs/plugin-vue': ^4.1.0
@@ -980,7 +980,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.3.5_@types+node@20.1.3
+      vite: 4.3.5
       vue: 3.3.2
     dev: true
 
