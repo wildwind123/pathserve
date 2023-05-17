@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@pathserve/messenger": "workspace:0.0.641-alpha",
+    "@pathserve/messenger": "workspace:0.0.642-alpha",
     "typescript": "^5.0.2",
     "vite": "^4.3.2"
   }
