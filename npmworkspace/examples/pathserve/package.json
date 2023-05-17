@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "pathserve": "pathserve"
+    "pathserve": "pathserve --config=../global.yaml"
   },
   "devDependencies": {
     "@pathserve/bin": "workspace:0.0.641-alpha",
