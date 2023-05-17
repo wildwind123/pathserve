@@ -233,15 +233,18 @@ const sendMessageAndSetListener = (message: Message) => {
 
 const setListenerVariable = () => {
   if (!window.pathServeMessageListener) {
-    let msg = {
-      fromPathServe: true,
-      scenario: "clearControl",
-      name: "",
-    } as Message;
-    sendMessage(msg)
     window.pathServeMessageListener = new Listener();
   }
 };
+
+export const clearControl = () => {
+  let msg = {
+    fromPathServe: true,
+    scenario: "clearControl",
+    name: "",
+  } as Message;
+  sendMessage(msg)
+}
 
 const sendMessage = (message: Message) => {
   try {
