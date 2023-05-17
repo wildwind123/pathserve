@@ -3,15 +3,25 @@ server:
 handler_configs:
   book:
     handler: index
-    work_dir: vite-react/node_modules/@pathserve/client/dist
+    work_dir: vite-react/node_modules/@pathserve/client/dist 
+  vj:
+    handler: vite
+    work_dir: './vite-vanilla'
+    watch_dir: './vite-vanilla/src'
+    params:
+      html_template: pathserve/node_modules/@pathserve/client/templates/template.html
+      script_template: pathserve/node_modules/@pathserve/client/templates/vanilla-template.ts
+      auto_gen_dir: pathserve/node_modules/@pathserve/client/autogen
+      dir_public: vite-vanilla/public
+      host: http://localhost:5025
   vr:
     handler: vite
     work_dir: './vite-react'
     watch_dir: './vite-react/src'
     params:
-      html_template: vite-react/node_modules/@pathserve/client/templates/react-template.html
-      script_template: vite-react/node_modules/@pathserve/client/templates/react-template.tsx
-      auto_gen_dir: vite-react/node_modules/@pathserve/client/autogen
+      html_template: pathserve/node_modules/@pathserve/client/templates/react-template.html
+      script_template: pathserve/node_modules/@pathserve/client/templates/react-template.tsx
+      auto_gen_dir: pathserve/node_modules/@pathserve/client/autogen
       dir_public: vite-react/public
       host: http://localhost:5024
   vv:
@@ -19,12 +29,12 @@ handler_configs:
     work_dir: './vite-vue3'
     watch_dir: './vite-vue3/src'
     params:
-      html_template: vite-vue3/node_modules/@pathserve/client/templates/template.html
-      script_template: vite-vue3/node_modules/@pathserve/client/templates/vue3-template.ts
-      auto_gen_dir: vite-vue3/node_modules/@pathserve/client/autogen
+      html_template: pathserve/node_modules/@pathserve/client/templates/template.html
+      script_template: pathserve/node_modules/@pathserve/client/templates/vue3-template.ts
+      auto_gen_dir: pathserve/node_modules/@pathserve/client/autogen
       dir_public: vite-vue3/public
       host: http://localhost:5023
 host_params:
-  - path: vite-vue3/vite-react/node_modules/@pathserve/client/dist/index.html
+  - path: vite-vanilla/vite-react/node_modules/@pathserve/client/dist/index.html
     key: index
     handler_config: ""

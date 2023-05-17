@@ -1,4 +1,5 @@
 <template>
+  <h1>Vue 3</h1>
   <hr>
   <p >input 1</p>
   <p>

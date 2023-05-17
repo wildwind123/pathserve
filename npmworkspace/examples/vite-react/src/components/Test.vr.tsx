@@ -38,6 +38,7 @@ function App() {
   }, [])
   return (
     <>
+    <h1>React</h1>
     <div>
         <p>input 1</p>
         <input type="string" onChange={(event: React.FormEvent<HTMLInputElement>) => {sendInput1(event.currentTarget.value)}} value={valueInput1}/>

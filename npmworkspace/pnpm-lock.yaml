@@ -8,8 +8,10 @@ importers:
   examples/pathserve:
     specifiers:
       '@pathserve/bin': workspace:^0.0.640-alpha
+      '@pathserve/client': workspace:^0.0.640-alpha
     devDependencies:
       '@pathserve/bin': link:../../packages/bin
+      '@pathserve/client': link:../../packages/client
 
   examples/vite-react:
     specifiers:
@@ -43,6 +45,16 @@ importers:
       eslint: 8.40.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.40.0
       eslint-plugin-react-refresh: 0.3.5_eslint@8.40.0
+      typescript: 5.0.4
+      vite: 4.3.5
+
+  examples/vite-vanilla:
+    specifiers:
+      '@pathserve/messenger': workspace:^0.0.640-alpha
+      typescript: ^5.0.2
+      vite: ^4.3.2
+    devDependencies:
+      '@pathserve/messenger': link:../../packages/messenger
       typescript: 5.0.4
       vite: 4.3.5
 
