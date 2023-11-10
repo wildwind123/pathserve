@@ -1,9 +1,8 @@
 # pathserve
 
-see examples in 'npmworkspace'
-
-see this
-
+alternative
 ```
 https://github.com/wildwind123/vitebook
 ```
+
+
